@@ -15,7 +15,7 @@ jobs:
     env:
       VERSION: 1.0.0-g${{ github.sha }}-${{ matrix.size }}
 
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
 
     defaults:
       run:
