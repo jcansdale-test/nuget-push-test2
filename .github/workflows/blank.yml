@@ -36,7 +36,7 @@ jobs:
           </Project>
           EOM
 
-      - run: dd if=/dev/random of=embedded.txt count=${{ matrix.size }} bs=1024
+      - run: dd if=/dev/random of=embedded.txt count=0 bs=1024
 
       - run: dotnet pack -p:RepositoryUrl=${{ github.server_url }}/${{ github.repository }} -p:Version=${{ env.VERSION }}
 
