@@ -1,5 +1,7 @@
 on:
   push:
+  watch:
+    types: [started]
 
 env:
   DOTNET_NOLOGO: true
@@ -10,7 +12,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        handler: [true, false]
+        handler: [true]
         size: [1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024, 2048, 4096, 8192, 16384, 32768, 65536, 131072, 262144, 524288, 1048576, 2097152]
 
     env:
@@ -45,11 +47,11 @@ jobs:
         uses: actions/setup-dotnet@v1
         with:
           source-url: https://nuget.pkg.github.com/${{ github.repository_owner }}
-        env:
-          NUGET_AUTH_TOKEN: ${{ github.token }}
+        # env:
+        #  NUGET_AUTH_TOKEN: ${{ github.token }}
 
       - run: ls -l bin/Debug/*.nupkg
 
-      - run: dotnet nuget push bin/Debug/*.nupkg
+      - run: dotnet nuget push bin/Debug/*.nupkg -k ${{ github.token }}
         env:
           DOTNET_SYSTEM_NET_HTTP_USESOCKETSHTTPHANDLER: ${{ matrix.handler }}
