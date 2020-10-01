@@ -50,4 +50,6 @@ jobs:
       - run: ls -l bin/Debug/*.nupkg
 
       - run: nuget push bin/Debug/*.nupkg
+        env:
+          DOTNET_SYSTEM_NET_HTTP_USESOCKETSHTTPHANDLE: false
 
