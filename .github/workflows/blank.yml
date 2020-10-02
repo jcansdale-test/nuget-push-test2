@@ -42,4 +42,4 @@ jobs:
 
       - run: dotnet pack -p:RepositoryUrl=${{ github.server_url }}/${{ github.repository }} -p:Version=${{ env.VERSION }}
 
-      - run: dotnet nuget push bin/Debug/*.nupkg -k ${{ github.token }} --source https://nuget.pkg.github.com/${{ github.repository_owner }}
+      - run: dotnet nuget push bin/Debug/*.nupkg -k ${{ github.token }} --source https://nuget-lab.pkg.github.com/jcansdale-test/${{ github.repository_owner }}
